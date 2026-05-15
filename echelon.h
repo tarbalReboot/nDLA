@@ -8,16 +8,9 @@
  * jepetersen@utexas.edu
  */
 
-#ifndef ECHELON_HPP
-#define ECHELON_HPP
+#ifndef ECHELON_H
+#define ECHELON_H
 #include "ndimensional.h"
-
-bool swapCondition(unsigned int i, unsigned int n, long double ele)
-{
-    if(ele != 0)
-        return true;
-    else return false;
-}
 
 //Swaps rows during echelon reduction
 twoFormV rowSwap(twoFormV inMat, int index1, int index2)
@@ -32,6 +25,7 @@ twoFormV rowSwap(twoFormV inMat, int index1, int index2)
     return inMat;
 }
 
+//Which indices to skip
 bool skipCondition(int i, int j, int k)
 {
     if(j <= i || k < i)
@@ -63,21 +57,8 @@ twoFormV echelonU(twoFormV inMatrix, twoFormV outMatrix)
                             if(factor != 0)
                             {
                                 inMatrix[k][j] = (factor * inMatrix[k][i]) + inMatrix[k][j];
-                                std::cout << "k  j  =  (f * (k  i))    +   k  j" << std::endl;
-                                std::cout << k << " " << j << "    " << k << " " << i << "    " << k << " " << j << std::endl;
                             }
                         }
-
-                        for(int i = 0; i < mSize; i++)
-                        {
-                           for(int j = 0; j < nSize; j++)
-                           {
-                               std::cout << inMatrix[i][j] << "    ";
-                           }
-                           std::cout << std::endl;
-                        }
-
-                        std::cout << std::endl;
                         continue;
                     }
                 }
@@ -97,4 +78,4 @@ twoFormV echelonU(twoFormV inMatrix, twoFormV outMatrix)
     return inMatrix;
 }
 
-#endif // ECHELON_HPP
+#endif // ECHELON_H
