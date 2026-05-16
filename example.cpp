@@ -81,19 +81,22 @@ int main()
 	twoFormV testInMatrix9 {{3,4,3,2,1,5,6,10},{12,8,9,7,13,23,24,11},{10,21,22,13,14,15,16,17},{9,8,7,6,31,32,33,34},{8,1,1,2,1,1,1,1},{12,2,4,4,4,4,4,4},{3,3,3,3,3,3,3,3},{1,2,3,4,5,6,7,8},{55,44,33,32,31,22,25,41}};
     ///////////
 
+	twoFormV testInMatrix10 {{1,7,4,9,50,20,36},{2,6,3,8,25,10,60},{3,5,2,7,20,25,18},{4,4,1,6,14,9,13},{5,3,5,12,12,22,17},
+		{6,2,6,14,10,24,11},{7,1,7,16,8,32,2}};
+
 	// begin row reduction:
 
     twoFormV *rowReduced = new twoFormV;
-    rowReduced->assign(testInMatrix9.size(), testInMatrix9[0]);
-    rowReduced->reserve(testInMatrix9.size() * testInMatrix9[0].size() * sizeof(long double));
-    *rowReduced = echelonU(testInMatrix9, *rowReduced);
+    rowReduced->assign(testInMatrix10.size(), testInMatrix10[0]);
+    rowReduced->reserve(testInMatrix10.size() * testInMatrix10[0].size() * sizeof(long double));
+    *rowReduced = echelonU(testInMatrix10, *rowReduced);
 
 	std::cout << std::endl;
     std::cout << "Test OUT 9x8 matrix Echelon U reduction: " << std::endl;
 
-    for(int i = 0; i < testInMatrix9[0].size(); i++)
+    for(int i = 0; i < testInMatrix10[0].size(); i++)
 	{
-		for(int j = 0; j < testInMatrix9.size(); j++)
+		for(int j = 0; j < testInMatrix10.size(); j++)
 		{
             std::cout << rowReduced[0][j][i] << "    ";
 		}

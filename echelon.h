@@ -1,5 +1,6 @@
 /* Copyright John E. Petersen III, 2026.
  * May 15, 2026, 02:00 CST USA.
+ * Algorithm improved May 15th, 2026, 22:51 CST USA.
  * Any redistribution of this software in any form with 
  * any modifications must retain this license agreement. 
  * Commercial usage is forbidden without express written 
@@ -16,7 +17,7 @@
 //Swaps rows during echelon reduction
 twoFormV rowSwap(twoFormV inMat, int index1, int index2)
 {
-    unsigned long int nSize = inMat.size();
+    unsigned int nSize = inMat.size();
     twoFormV tempMatrix = inMat;
     for (int n = 0; n < nSize - index1; n++)
         {
@@ -37,12 +38,12 @@ bool skipCondition(int i, int j, int k)
 //Echelon row reduction 
 twoFormV echelonU(twoFormV inMatrix, twoFormV outMatrix)
 {
-    unsigned long int mSize = inMatrix.size();
-    unsigned long int nSize = inMatrix[0].size();
+    unsigned int mSize = inMatrix.size();
+    unsigned int nSize = inMatrix[0].size();
     long double factor;
-    for(int i = 0; i < nSize - 1; i++)
+    for(unsigned int i = 0; i < nSize - 1; i++)
     {
-        for (int j = 1; j < nSize; j++)
+        for (unsigned int j = 1; j < nSize; j++)
         {
             factor = -inMatrix[i][j] / inMatrix[i][i];
             if(inMatrix[i][i] != 0)
@@ -66,12 +67,15 @@ twoFormV echelonU(twoFormV inMatrix, twoFormV outMatrix)
             }
             else 
             {
-                for (int p = nSize; p > 0; p--)
+                for (int p = nSize; p > 1; p--)
                 {
-                    if(inMatrix[i][i+nSize-p])
+                    if(i < p-1 && inMatrix[i][i+nSize-p] != 0)
+                    {
                         inMatrix = rowSwap(inMatrix, i, i+nSize-p);
+                        j--;
+                        continue;
+                    }
                 }
-                j--;
                 continue;
             }
         }
