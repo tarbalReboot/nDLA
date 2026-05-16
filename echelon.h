@@ -1,4 +1,5 @@
 /* Copyright John E. Petersen III, 2026.
+ * May 15, 2026, 02:00 CST USA.
  * Any redistribution of this software in any form with 
  * any modifications must retain this license agreement. 
  * Commercial usage is forbidden without express written 
