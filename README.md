@@ -1,4 +1,4 @@
-nDLA 0.1.1.0
+nDLA 0.2.0.1
 
 N-dimensional Linear Algebra in classless C++.
 
