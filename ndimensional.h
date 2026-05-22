@@ -14,9 +14,9 @@
 #include <iostream>
 #include <vector>
 
-typedef std::vector<long double> oneFormV;
+typedef std::vector<double> oneFormV;
 
-typedef std::vector<std::vector <long double>> twoFormV;
+typedef std::vector<std::vector <double>> twoFormV;
 
 // adds two vectors of the same length -- will not add and will return only the first vector, if the two vectors have different dimensions. Flip sign of vec2 to subtract.
 oneFormV add(oneFormV vec1, oneFormV vec2)
@@ -62,7 +62,7 @@ long double dot(oneFormV vec1, oneFormV vec2, long double &rDouble)
 
 // vector outer products do not require equal dimensionality. Tested to high dimensionality. Memory must be allocated 
 // appropriately, or you will have serious problems. See test.cpp.
-twoFormV outerProduct(std::vector<long double> columnVector, std::vector<long double> rowVector, twoFormV rMatrix)
+twoFormV outerProduct(oneFormV columnVector, oneFormV rowVector, twoFormV rMatrix)
 {
     for(int i=0; i< columnVector.size(); i++)
     {
